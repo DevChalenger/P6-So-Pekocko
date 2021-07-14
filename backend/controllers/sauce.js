@@ -17,7 +17,7 @@ exports.createSauce = (req, res, next) => {
 };
 
 exports.modifySauce = (req, res, next) => {
-  let sauceObject = {};
+  let saucesProduct = {};
   req.file
     ? (Sauce.findOne({
         _id: req.params.id,
@@ -25,13 +25,13 @@ exports.modifySauce = (req, res, next) => {
         const filename = sauce.imageUrl.split("/images/")[1];
         fs.unlinkSync(`images/${filename}`);
       }),
-      (sauceObject = {
+      (saucesProduct = {
         ...JSON.parse(req.body.sauce),
         imageUrl: `${req.protocol}://${req.get("host")}/images/${
           req.file.filename
         }`,
       }))
-    : (sauceObject = {
+    : (saucesProduct = {
         ...req.body,
       });
   Sauce.updateOne(
@@ -39,7 +39,7 @@ exports.modifySauce = (req, res, next) => {
       _id: req.params.id,
     },
     {
-      ...sauceObject,
+      ...saucesProduct,
       _id: req.params.id,
     }
   )
