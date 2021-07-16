@@ -1,14 +1,20 @@
 const bcrypt = require("bcrypt"); //Importation du module bcrypt pour le hashage des mots de passes//
 const jwt = require("jsonwebtoken");
+const cryptojs = require("crypto-js");
 
 const User = require("../models/user");
 const secret = require("../secret/secret");
+
 exports.signup = (req, res, next) => {
+  const emailCrypted = cryptojs
+    .HmacSHA256(req.body.email, secret.emailSecret)
+    .toString();
   bcrypt
     .hash(req.body.password, 10)
+
     .then((hash) => {
       const user = new User({
-        email: req.body.email,
+        email: emailCrypted,
         password: hash,
       });
       user
@@ -20,7 +26,10 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-  User.findOne({ email: req.body.email })
+  const emailCrypted = cryptojs
+    .HmacSHA256(req.body.email, secret.emailSecret)
+    .toString();
+  User.findOne({ email: emailCrypted })
     .then((user) => {
       if (!user) {
         return res.status(401).json({ error: "Utilisateur non trouvé !" });

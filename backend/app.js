@@ -4,6 +4,7 @@ const mongoose = require("mongoose"); //Importation du module mongoose//
 const path = require("path"); //Importation du module path//
 const helmet = require("helmet");
 const nocache = require("nocache");
+const rateLimit = require("express-rate-limit");
 const userRoutes = require("./routes/user"); //Importation des routes users//
 const saucesRoutes = require("./routes/sauce"); //Importation des routes sauces//
 
@@ -18,6 +19,11 @@ mongoose //Connexion à la base de donnés mongoose //
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
 const app = express();
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+});
 //Cors//
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -35,6 +41,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(nocache());
 app.use(helmet());
+app.use("/api/", apiLimiter);
 
 //--Routes--//
 app.use("/images", express.static(path.join(__dirname, "images")));
