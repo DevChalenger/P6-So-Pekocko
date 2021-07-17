@@ -9,6 +9,7 @@ exports.signup = (req, res, next) => {
   const emailCrypted = cryptojs
     .HmacSHA256(req.body.email, secret.emailSecret)
     .toString();
+
   bcrypt
     .hash(req.body.password, 10)
 
@@ -29,6 +30,7 @@ exports.login = (req, res, next) => {
   const emailCrypted = cryptojs
     .HmacSHA256(req.body.email, secret.emailSecret)
     .toString();
+
   User.findOne({ email: emailCrypted })
     .then((user) => {
       if (!user) {

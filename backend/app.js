@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(nocache());
 app.use(helmet());
-app.use("/api/", apiLimiter);
+app.use("/api/auth/login", apiLimiter);
 
 //--Routes--//
 app.use("/images", express.static(path.join(__dirname, "images")));
