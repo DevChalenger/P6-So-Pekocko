@@ -24,7 +24,7 @@ const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 5,
   message:
-    "Trop de tentative de connection ont étaient enrengistré veiller réessayer dans 15min ",
+    "Trop de tentative de connection ont été enrengistré veiller réessayer dans 15min ",
 });
 //Cors//
 app.use((req, res, next) => {
