@@ -9,7 +9,7 @@ Sinon télécharger le répertoire au format zip à partir du bouton code et il 
 
 ## Development server backend
 
-Pour pouvoir lancer le backend vous aller devoir installé nodejs "https://nodejs.org/en/"(installé la version recomandé), dés que l'instalation est terminé dirigé vous vers le répertoire du projet dans le dossier "backend" à partir d'un terminal et saisir "npm install" sa installera toutes les dépendances du projet(package.json) dans votre répertoire(dans un fichier node_modules), À la fin de l'instalation des dépendances saisir nodemon dans le terminal pour pouvoir lancer le backend le serveur sera héberger sur le port "http://localhost:3000/".
+Pour pouvoir lancer le backend vous aller devoir installé nodejs "https://nodejs.org/en/" (installé la version recomandé), dés que l'instalation est terminé dirigé vous vers le répertoire du projet dans le dossier "backend" à partir d'un terminal et saisir "npm install" sa installera toutes les dépendances du projet(package.json) dans votre répertoire(dans un fichier node_modules), À la fin de l'instalation des dépendances saisir nodemon dans le terminal pour pouvoir lancer le backend ,le serveur sera héberger sur le port "http://localhost:3000/".
 
 ## Connecion DataBase
 
