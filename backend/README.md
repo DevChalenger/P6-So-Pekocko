@@ -17,4 +17,4 @@ La connection à la base de donnés devrait avoir besoin du fichier env qui a é
 
 ## KEYS SECRET
 
-Pour activé les clés (email et token) vous aurez besoin du fichier secret qui est déposé dans le livrable, copier le contenu du fichier et enrengistré le à la racine du fichier backend .
+Pour activé les clés (email et token) vous aurez besoin du fichier secret qui est déposé dans le livrable, copier le fichier et enrengistré le à la racine du fichier backend .
